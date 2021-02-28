@@ -19,6 +19,8 @@ So to start, we'll need to get a copy of your DSDT from your firmware. The easie
   * `4. Dump DSDT - Automatically dump the system DSDT`
 * Do note that all ACPI patches from clover/OpenCore will be applied to the DSDT with the above method
 
+In Linux OS the acpi tables are available in /sys/firmware/acpi/tables/ directory in binary form. In Debian Linux you can install the **acpica-tools** package, which contents `acpidump-acpica` and `iasl` command for dump and compile/decompile acpi tables. So you can get the binary DSDT table as root: `acpidump-acpica -bznDSDT` . Next you can decompile the binary file: `iasl dsdt.dat` . The output, dsdt.dsl, is editable text file. After aplying edit and patches you can compile it back: `iasl dsdt.dsl` , and you get the dsdt.aml file.
+
 ## From Clover
 
 For those with Clover installed previously, this is a simple way to get your ACPI tables:
